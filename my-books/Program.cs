@@ -27,6 +27,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    AppDbSeeder.Seed(app);
 }
 
 app.UseHttpsRedirection();
