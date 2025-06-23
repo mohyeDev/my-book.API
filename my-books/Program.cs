@@ -17,6 +17,8 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IGenreRepostiory, GenreRepository>();
+builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
