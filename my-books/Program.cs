@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using my_books.Data;
 using my_books.Data.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    AppDbInitializer.Seed(app);
 }
 
 app.UseHttpsRedirection();
