@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using my_books.Data;
 using my_books.Data.Models;
+using my_books.Data.Repositories;
+using my_books.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,9 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBookService, BookService>();
 
 var app = builder.Build();
 
