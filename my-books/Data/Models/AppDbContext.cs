@@ -12,5 +12,7 @@ namespace my_books.Data.Models
         public DbSet<Book> books { get; set; }  
 
         public DbSet<User> users { get; set; }  
+
+        public DbSet<Genre> genres { get; set; }
     }
 }

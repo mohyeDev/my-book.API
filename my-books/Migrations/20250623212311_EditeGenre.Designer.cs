@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using my_books.Data.Models;
 
@@ -11,9 +12,11 @@ using my_books.Data.Models;
 namespace my_books.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250623212311_EditeGenre")]
+    partial class EditeGenre
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +51,7 @@ namespace my_books.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GenreId")
+                    b.Property<int>("Genre")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsRead")
@@ -63,26 +66,7 @@ namespace my_books.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GenreId");
-
                     b.ToTable("books");
-                });
-
-            modelBuilder.Entity("my_books.Data.Models.Genre", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("genres");
                 });
 
             modelBuilder.Entity("my_books.Data.Models.User", b =>
@@ -108,17 +92,6 @@ namespace my_books.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("users");
-                });
-
-            modelBuilder.Entity("my_books.Data.Models.Book", b =>
-                {
-                    b.HasOne("my_books.Data.Models.Genre", "Genre")
-                        .WithMany()
-                        .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Genre");
                 });
 #pragma warning restore 612, 618
         }
