@@ -17,7 +17,7 @@ namespace my_books.Data.Repositories
         public Task AddAsync(Book book)
         {
             _context.books.AddAsync(book);
-            return Task.CompletedTask;
+            return _context.SaveChangesAsync();  
         }   
 
         public Task DeleteAsync(Book book)

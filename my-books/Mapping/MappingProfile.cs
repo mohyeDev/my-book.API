@@ -10,6 +10,6 @@ public class MappingProfile : Profile
     {
 
         CreateMap<Book, BookDto>().ForMember(dest => dest.GenreName, opt => opt.MapFrom(src => src.Genre.Name));
-        CreateMap<Book, CreateBookDto>();
+        CreateMap<Book, CreateBookDto>().ReverseMap();
     }
 }

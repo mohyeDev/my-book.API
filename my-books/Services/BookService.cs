@@ -27,13 +27,13 @@ public class BookService : IBookService
        await  _bookRepository.AddAsync(book);
     }
 
-    public Task UpdateBookAsync(Book book)
+    public async Task UpdateBookAsync(Book book)
     {
-        throw new NotImplementedException();
+        await _bookRepository.UpdateAsync(book);
     }
 
-    public Task DeleteBookAsync(Book book)
+    public async Task DeleteBookAsync(Book book)
     {
-        throw new NotImplementedException();
+        await _bookRepository.DeleteAsync(book);
     }
 }
